@@ -83,7 +83,8 @@
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             if (input.value) {
-                socket.emit('chat message', `${input.value}`);
+                let username = sessionStorage.getItem('name')
+                socket.emit('chat message', `${username} ${input.value}`);
                 input.value = '';
             }
         });
