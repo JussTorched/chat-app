@@ -89,6 +89,9 @@
             e.preventDefault();
             if (input.value) {
                 let username = sessionStorage.getItem('name')
+                if (username == null) {
+                    let username = 'Anonymous'
+                }
                 socket.emit('chat message', `[${username}] : ${input.value}`);
                 input.value = '';
             }
