@@ -66,6 +66,9 @@
     <script>
         function setUser() {
             let username = window.prompt('Enter Your Username')
+            if (username == null) {
+                username = 'Anonymous'
+            }
             sessionStorage.setItem('name', username)
         }
     </script>
@@ -89,9 +92,6 @@
             e.preventDefault();
             if (input.value) {
                 let username = sessionStorage.getItem('name')
-                if (username == null) {
-                    username = 'Anonymous'
-                }
                 socket.emit('chat message', `[${username}] : ${input.value}`);
                 input.value = '';
             }
